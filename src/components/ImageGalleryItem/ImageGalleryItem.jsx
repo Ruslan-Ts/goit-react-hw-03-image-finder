@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
-import { ImageItem, Image } from "./ImageGalleryItem.styled";
+import { ImageItem, Image } from './ImageGalleryItem.styled';
 
-const ImageGalleryItem = ({ id, webformatURL, tags, onclose }) => {
-    return (
-        <ImageItem key={id} onCImageItemck={onClose}>
-            <Image src={webformatURL} alt={tags} />
-        </ImageItem>
-    );
+const ImageGalleryItem = ({ webformatURL, tags, onClick, largeImageURL }) => {
+  return (
+    <ImageItem onClick={() => onClick({ tags, largeImageURL })}>
+      <Image src={webformatURL} alt={tags} />
+    </ImageItem>
+  );
 };
 
-ImageGalleryItem.PropTypes = {
-    id: PropTypes.number,
-    webformatURL: PropTypes.string,
-    tags: PropTypes.string.isRequired,
-    onClose: PropTypes.func.isRequired,
+ImageGalleryItem.propTypes = {
+  webformatURL: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
 };
 
 export default ImageGalleryItem;
